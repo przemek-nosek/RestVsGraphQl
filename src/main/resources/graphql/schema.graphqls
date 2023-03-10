@@ -1,0 +1,41 @@
+type Query {
+    getCart(id: ID!): Cart
+    getCustomer(id: ID!): Customer
+    getCustomers(page: Int, size: Int): [Customer]
+}
+
+type Mutation {
+    deleteCart(id: ID!): ID
+    createCart(customerId: ID!, cartDto: CartDto!): ID
+    updateCart(cartId: ID!, cartDto: CartDto!): ID
+}
+
+type Cart {
+    id: ID!
+    totalItems: Int
+    totalPrice: String
+    discountCode: String
+    customer: Customer
+}
+
+type Customer {
+    id: ID!
+    name: String
+    contactFirstName: String
+    contactLastName: String
+    phone: String
+    addressLine1: String
+    addressLine2: String
+    city: String
+    state: String
+    postalCode: String
+    creditLimit: String
+}
+
+input CartDto {
+    id: ID
+    totalItems: Int!
+    totalPrice: String!
+    discountCode: String
+}
+
